@@ -31,10 +31,8 @@ public class MarkdownEditor extends Application {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 String markdown = textArea.getText();
-                System.out.println(markdown);
                 String html = parser.parse(markdown);
                 displayArea.getEngine().loadContent(html);
-                System.out.println(html);
             }
         });
 
