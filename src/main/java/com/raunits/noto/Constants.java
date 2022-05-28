@@ -10,15 +10,15 @@ public class Constants {
     public static final String H6 = "#{6}\\s?([^\n]+)";
     public static final String BOLD = "\\*\\*\\s?([^\\n]+)\\*\\*";
     public static final String ITALICS = "_([^_`]+)_";
-    //    public static final String UNDERLINE = "__([^_]+)__";
     public static final String PARAGRAPH = "([^\\n]+\\n?)";
     public static final String P = "~\\s?([^\n]+)";
 
     public static final String HYPERLINK = "\\[([^\\]]+)\\]\\(([^)]+)\\)";
 
-    // match things like: adjndjandwandjn\n and capture text except \n
-    // dosen't match something like: efknefjn<any/>\n
-    public static final String NEWLINE = "([^>\\n]+)\\n";
+    public static final String NEWLINE = "\n";
+    public static final String HEADING_BUG = "(</h[1-6]>)<br/>";
+    public static final String LIST_BUG = "(</li>)<br/>";
+    public static final String LIST = "(\\*)([^\\n]+)";
 
     // replacements
     public static final String H1_REPLACEMENT = String.format("<h1 style='%s'>$1</h1>", CSS.heading);
@@ -30,12 +30,13 @@ public class Constants {
 
     public static final String BOLD_REPLACEMENT = "<b>$1</b>";
     public static final String ITALICS_REPLACEMENT = "<i>$1</i>";
-    //    public static final String UNDERLINE_REPLACEMENT = "<u>$1</u>";
     public static final String PARAGRAPH_REPLACEMENT = String.format("<p style='%s'>$1</p>", CSS.wordWrap);
 
     public static final String HYPERLINK_REPLACEMENT = String.format("<a href='$2' style='%s'>$1</a>", CSS.wordWrap);
 
-    // add captured text + br instead of a new line.
-    public static final String NEWLINE_REPLACEMENT = "$1<br/>";
+    public static final String NEWLINE_REPLACEMENT = "<br/>";
+    public static final String HEADING_FIX = "$1";
+    public static final String LIST_FIX = "$1";
     public static final String P_REPLACEMENT = String.format("<p style='%s'>$1</p>", CSS.wordWrap);
+    public static final String LIST_REPLACEMENT = "<li>$2</li>";
 }

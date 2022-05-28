@@ -16,10 +16,13 @@ public class Parser {
             // styles
             Constants.BOLD,
             Constants.ITALICS,
-            Constants.NEWLINE,
 
             Constants.HYPERLINK,
-            Constants.P
+            Constants.P,
+            Constants.LIST,
+            Constants.NEWLINE,
+            Constants.HEADING_BUG,
+            Constants.LIST_BUG
     };
 
     public Parser() {
@@ -51,10 +54,14 @@ public class Parser {
         replacements.put(Constants.ITALICS, Constants.ITALICS_REPLACEMENT);
         replacements.put(Constants.PARAGRAPH, Constants.PARAGRAPH_REPLACEMENT);
         replacements.put(Constants.NEWLINE, Constants.NEWLINE_REPLACEMENT);
+        replacements.put(Constants.HEADING_BUG, Constants.HEADING_FIX);
+        replacements.put(Constants.LIST_BUG, Constants.LIST_FIX);
         replacements.put(Constants.P, Constants.P_REPLACEMENT);
 
         // Links
         replacements.put(Constants.HYPERLINK, Constants.HYPERLINK_REPLACEMENT);
+
+        replacements.put(Constants.LIST, Constants.LIST_REPLACEMENT);
     }
 
 }

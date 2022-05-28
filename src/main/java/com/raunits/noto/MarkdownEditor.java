@@ -9,21 +9,31 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class MarkdownEditor extends Application {
+    private final TextArea textArea = new TextArea();
+
     @Override
     public void start(Stage stage) throws IOException {
         final Parser parser = new Parser();
         GridPane window = new GridPane();
-        TextArea textArea = new TextArea();
         WebView displayArea = new WebView();
         String placeholder = "# Start typing...";
+        String savedMarkdown = Files.readString(Path.of("/home/raunits/.noto"));
 
-        textArea.setText(placeholder);
+        if (savedMarkdown != null) {
+            textArea.setText(savedMarkdown);
+            displayArea.getEngine().loadContent(parser.parse(savedMarkdown));
+        } else {
+            textArea.setText(placeholder);
+            displayArea.getEngine().loadContent("<h1>Start typing...</h1>");
+        }
+
         window.add(textArea, 0, 0);
-
-        displayArea.getEngine().loadContent("<h1>Start typing...</h1>");
         window.add(displayArea, 1, 0);
 
         textArea.setWrapText(true);
@@ -43,6 +53,21 @@ public class MarkdownEditor extends Application {
         stage.setMinHeight(600);
         stage.show();
 
+    }
+
+    @Override
+    public void stop() {
+        try {
+            FileWriter fileWriter = new FileWriter("/home/raunits/.noto");
+            String markdown = textArea.getText();
+            for(char c : markdown.toCharArray()) {
+                fileWriter.write(c);
+            }
+            fileWriter.close();
+            System.out.println("saved successfully");
+        } catch (IOException e) {
+            e.printStackTrace();;
+        }
     }
 
     public static void main(String[] args) {
