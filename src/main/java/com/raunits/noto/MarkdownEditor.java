@@ -22,6 +22,7 @@ public class MarkdownEditor extends Application {
         final Parser parser = new Parser();
         GridPane window = new GridPane();
         WebView displayArea = new WebView();
+        displayArea.getEngine().setUserStyleSheetLocation(String.format("data:, %s", CSS.stylesheet));
         String placeholder = "# Start typing...";
         String savedMarkdown = Files.readString(Path.of("/home/raunits/.noto"));
 

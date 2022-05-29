@@ -17,6 +17,8 @@ public class Parser {
             Constants.BOLD,
             Constants.ITALICS,
 
+            Constants.SIZED_IMAGE,
+            Constants.IMAGE,
             Constants.HYPERLINK,
             Constants.P,
             Constants.LIST,
@@ -57,7 +59,8 @@ public class Parser {
         replacements.put(Constants.HEADING_BUG, Constants.HEADING_FIX);
         replacements.put(Constants.LIST_BUG, Constants.LIST_FIX);
         replacements.put(Constants.P, Constants.P_REPLACEMENT);
-
+        replacements.put(Constants.IMAGE, Constants.IMAGE_REPLACEMENT);
+        replacements.put(Constants.SIZED_IMAGE, Constants.SIZED_IMAGE_REPLACEMENT);
         // Links
         replacements.put(Constants.HYPERLINK, Constants.HYPERLINK_REPLACEMENT);
 
