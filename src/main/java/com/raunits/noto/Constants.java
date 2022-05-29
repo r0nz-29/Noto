@@ -12,9 +12,7 @@ public class Constants {
     public static final String ITALICS = "_([^_`]+)_";
     public static final String PARAGRAPH = "([^\\n]+\\n?)";
     public static final String P = "~\\s?([^\n]+)";
-
     public static final String HYPERLINK = "\\[(.+)\\]\\((.+)\\)";
-
     public static final String NEWLINE = "\n";
     public static final String HEADING_BUG = "(</h[1-6]>)<br/>";
     public static final String LIST_BUG = "(</li>)<br/>";
@@ -29,11 +27,9 @@ public class Constants {
     public static final String H4_REPLACEMENT = "<h4>$1</h4>";
     public static final String H5_REPLACEMENT = "<h5>$1</h5>";
     public static final String H6_REPLACEMENT = "<h6>$1</h6>";
-
     public static final String BOLD_REPLACEMENT = "<b>$1</b>";
     public static final String ITALICS_REPLACEMENT = "<i>$1</i>";
     public static final String PARAGRAPH_REPLACEMENT = "<p>$1</p>";
-
     public static final String HYPERLINK_REPLACEMENT = "<a href='$2'>$1</a>";
     public static final String IMAGE_REPLACEMENT = "<img src='$2' alt='$1' />";
     public static final String SIZED_IMAGE_REPLACEMENT = "<img src='$2' alt='$1' width='$3' height='$4' />";

@@ -3,9 +3,10 @@ package com.raunits.noto;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
@@ -20,7 +21,19 @@ public class MarkdownEditor extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         final Parser parser = new Parser();
+
         GridPane window = new GridPane();
+
+        // for responsive column width
+        ColumnConstraints textAreaConstraints = new ColumnConstraints();
+        textAreaConstraints.setPercentWidth(30);
+        ColumnConstraints displayAreaConstraints = new ColumnConstraints();
+        displayAreaConstraints.setPercentWidth(70);
+        window.getColumnConstraints().addAll(textAreaConstraints, displayAreaConstraints);
+
+        // for responsive height
+        GridPane.setVgrow(textArea, Priority.ALWAYS);
+
         WebView displayArea = new WebView();
         displayArea.getEngine().setUserStyleSheetLocation(String.format("data:, %s", CSS.stylesheet));
         String placeholder = "# Start typing...";
@@ -50,8 +63,6 @@ public class MarkdownEditor extends Application {
         Scene scene = new Scene(window);
         stage.setTitle("Noto");
         stage.setScene(scene);
-        stage.setMinWidth(800);
-        stage.setMinHeight(600);
         stage.show();
 
     }
