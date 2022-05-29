@@ -19,6 +19,9 @@ public class Constants {
     public static final String LIST = "(\\*)([^\\n]+)";
     public static final String IMAGE = "!\\[(.+)\\]\\((.+)\\)";
     public static final String SIZED_IMAGE = "!\\[(.+)\\]\\((.+)\\)\\(([0-5]*[0-9]*[0-9]*), ([0-5]*[0-9]*[0-9]*)\\)";
+    public static final String CODE = "`([^`]+)`";
+    public static final String CODEBLOCK = "```([^`]+)```";
+    public static final String CODEBLOCK_BUG = "(</pre>)<br/>";
 
     // replacements
     public static final String H1_REPLACEMENT = "<h1>$1</h1>";
@@ -38,4 +41,7 @@ public class Constants {
     public static final String LIST_FIX = "$1";
     public static final String P_REPLACEMENT = "<p>$1</p>";
     public static final String LIST_REPLACEMENT = "<li>$2</li>";
+    public static final String CODE_REPLACEMENT = "<code>$1</code>";
+    public static final String CODEBLOCK_REPLACEMENT = "<pre>$1</pre>";
+    public static final String CODEBLOCK_FIX = "$1";
 }

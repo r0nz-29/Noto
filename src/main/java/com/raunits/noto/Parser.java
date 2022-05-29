@@ -5,18 +5,14 @@ import java.util.HashMap;
 public class Parser {
     private final HashMap<String, String> replacements = new HashMap<>();
     private final String[] rules = {
-            // headings
             Constants.H6,
             Constants.H5,
             Constants.H4,
             Constants.H3,
             Constants.H2,
             Constants.H1,
-
-            // styles
             Constants.BOLD,
             Constants.ITALICS,
-
             Constants.SIZED_IMAGE,
             Constants.IMAGE,
             Constants.HYPERLINK,
@@ -24,7 +20,10 @@ public class Parser {
             Constants.LIST,
             Constants.NEWLINE,
             Constants.HEADING_BUG,
-            Constants.LIST_BUG
+            Constants.LIST_BUG,
+            Constants.CODEBLOCK,
+            Constants.CODE,
+            Constants.CODEBLOCK_BUG
     };
 
     public Parser() {
@@ -61,10 +60,11 @@ public class Parser {
         replacements.put(Constants.P, Constants.P_REPLACEMENT);
         replacements.put(Constants.IMAGE, Constants.IMAGE_REPLACEMENT);
         replacements.put(Constants.SIZED_IMAGE, Constants.SIZED_IMAGE_REPLACEMENT);
-        // Links
         replacements.put(Constants.HYPERLINK, Constants.HYPERLINK_REPLACEMENT);
-
         replacements.put(Constants.LIST, Constants.LIST_REPLACEMENT);
+        replacements.put(Constants.CODEBLOCK, Constants.CODEBLOCK_REPLACEMENT);
+        replacements.put(Constants.CODE, Constants.CODE_REPLACEMENT);
+        replacements.put(Constants.CODEBLOCK_BUG, Constants.CODEBLOCK_FIX);
     }
 
 }

@@ -3,7 +3,6 @@ package com.raunits.noto;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.*;
@@ -26,9 +25,9 @@ public class MarkdownEditor extends Application {
 
         // for responsive column width
         ColumnConstraints textAreaConstraints = new ColumnConstraints();
-        textAreaConstraints.setPercentWidth(30);
+        textAreaConstraints.setPercentWidth(40);
         ColumnConstraints displayAreaConstraints = new ColumnConstraints();
-        displayAreaConstraints.setPercentWidth(70);
+        displayAreaConstraints.setPercentWidth(60);
         window.getColumnConstraints().addAll(textAreaConstraints, displayAreaConstraints);
 
         // for responsive height
