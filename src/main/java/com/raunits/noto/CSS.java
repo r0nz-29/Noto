@@ -34,6 +34,7 @@ public class CSS {
             .append("background-color: #f8f8f8;")
             .append("border-radius: 3px;")
             .append("white-space: nowrap;")
+            .append("font-family: JetBrains Mono, Consolas, monospace;")
             .append("}")
 
             //code block
@@ -42,6 +43,7 @@ public class CSS {
             .append("border: 1px solid #ccc;")
             .append("padding: 6px 10px;")
             .append("border-radius: 3px;")
+    .append("font-family: JetBrains Mono, Consolas, monospace;")
             .append("overflow: auto;")
             .append("margin-right: 16px;")
             .append("}")
