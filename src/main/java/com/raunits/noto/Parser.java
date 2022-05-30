@@ -23,7 +23,8 @@ public class Parser {
             Constants.LIST_BUG,
             Constants.CODEBLOCK,
             Constants.CODE,
-            Constants.CODEBLOCK_BUG
+            Constants.CODEBLOCK_BUG,
+            Constants.FLEX_ROW
     };
 
     public Parser() {
@@ -65,6 +66,7 @@ public class Parser {
         replacements.put(Constants.CODEBLOCK, Constants.CODEBLOCK_REPLACEMENT);
         replacements.put(Constants.CODE, Constants.CODE_REPLACEMENT);
         replacements.put(Constants.CODEBLOCK_BUG, Constants.CODEBLOCK_FIX);
+        replacements.put(Constants.FLEX_ROW, Constants.FLEXROW_REPLACEMENT);
     }
 
 }

@@ -22,6 +22,7 @@ public class Constants {
     public static final String CODE = "`([^`]+)`";
     public static final String CODEBLOCK = "```([^`]+)```";
     public static final String CODEBLOCK_BUG = "(</pre>)<br/>";
+    public static final String FLEX_ROW = "\\|([^\\|\\n]+)\\|([^\\|\\n]+)\\|";
 
     // replacements
     public static final String H1_REPLACEMENT = "<h1>$1</h1>";
@@ -44,4 +45,5 @@ public class Constants {
     public static final String CODE_REPLACEMENT = "<code>$1</code>";
     public static final String CODEBLOCK_REPLACEMENT = "<pre>$1</pre>";
     public static final String CODEBLOCK_FIX = "$1";
+    public static final String FLEXROW_REPLACEMENT = "<div style='display: flex; flex-direction: row; justify-content: space-between;'><div>$1</div><div>$2</div></div>";
 }

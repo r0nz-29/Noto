@@ -30,12 +30,7 @@ public class MarkdownEditor extends Application {
         String placeholder = "# Start typing...";
         String savedMarkdown = Files.readString(Path.of("/home/raunits/.noto"));
 
-        Button hideEditor = new Button("Hide Editor");
-        toolBar.getItems().add(hideEditor);
-        Button Bold = new Button("Bold");
-        toolBar.getItems().add(Bold);
-        Button italic = new Button("Italic");
-        toolBar.getItems().add(italic);
+        addToolbarButtons();
 
         textAreaContainer.getChildren().add(textArea);
         textAreaContainer.setFillWidth(true);
@@ -107,6 +102,14 @@ public class MarkdownEditor extends Application {
                 displayArea.getEngine().loadContent(html);
             }
         });
+    }
+
+    public void addToolbarButtons() {
+        Button hideEditor = new Button("Hide Editor");
+        Button bold = new Button("Bold");
+        Button italic = new Button("Italic");
+        Button theme = new Button("Toggle theme");
+        toolBar.getItems().addAll(hideEditor, bold, italic, theme);
     }
 
 //    public void redirectLinks() {

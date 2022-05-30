@@ -8,6 +8,7 @@ public class CSS {
             .append("font-family: Helvetica;")
             .append("word-wrap: break-word;")
             .append("padding-left: 8px;")
+            .append("padding-right: 16px;")
             .append("color: #333;")
             .append("-webkit-font-smoothing: antialiased;")
             .append("}")
