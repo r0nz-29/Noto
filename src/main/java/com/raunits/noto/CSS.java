@@ -16,9 +16,9 @@ public class CSS {
             // headings
             .append("h1, h2, h3, h4, h5, h6 { ")
             .append("border-bottom: 1px solid rgba(0, 0, 0, 0.2);")
-            .append("display: inline-block;")
-            .append("margin-top: 0px;")
-            .append("padding-bottom: 4px;")
+//            .append("display: inline-block;")
+//            .append("margin-top: 0px;")
+//            .append("padding-bottom: 4px;")
             .append("margin-bottom: 8px;")
             .append("color: #000;")
             .append(" }")

@@ -3,6 +3,9 @@ package com.raunits.noto;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -15,20 +18,26 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 public class MarkdownEditor extends Application {
     private static final GridPane window = new GridPane();
     private static final TextArea textArea = new TextArea();
     private static final Parser parser = new Parser();
-    private final WebView displayArea = new WebView();
     private static final ToolBar toolBar = new ToolBar();
     private static final VBox textAreaContainer = new VBox(toolBar);
-
+    private final WebView displayArea = new WebView();
+    public static final BorderPane displayAreaContainer = new BorderPane();
+    private static boolean textareaVisible = true;
 
     @Override
     public void start(Stage stage) throws IOException {
         String placeholder = "# Start typing...";
         String savedMarkdown = Files.readString(Path.of("/home/raunits/.noto"));
+
+        displayAreaContainer.setCenter(displayArea);
+
+        addDisplayAreaBtn();
 
         addToolbarButtons();
 
@@ -40,11 +49,11 @@ public class MarkdownEditor extends Application {
         textArea.setWrapText(true);
         textArea.setFont(Font.font("JetBrains Mono"));
 
-        responsivize();
+        responsivize(35, 65);
 
         // add styles
         displayArea.getEngine().setUserStyleSheetLocation(String.format("data:, %s", CSS.stylesheet));
-//        textArea.setStyle("-fx-focus-color: -fx-inner-border ; -fx-faint-focus-color: -fx-inner-border ;");
+        // textArea.setStyle("-fx-focus-color: -fx-inner-border ; -fx-faint-focus-color: -fx-inner-border ;");
 
         if (savedMarkdown != null) {
             textArea.setText(savedMarkdown);
@@ -55,10 +64,10 @@ public class MarkdownEditor extends Application {
         }
 
         window.add(textAreaContainer, 0, 0);
-        window.add(displayArea, 1, 0);
+        window.add(displayAreaContainer, 1, 0);
         addEventListener();
 
-//        redirectLinks();
+        // redirectLinks();
 
         Scene scene = new Scene(window);
         stage.setTitle("Noto");
@@ -82,11 +91,11 @@ public class MarkdownEditor extends Application {
         }
     }
 
-    public void responsivize() {
+    public void responsivize(int textareaWidth, int displayareaWidth) {
         ColumnConstraints textAreaConstraints = new ColumnConstraints();
-        textAreaConstraints.setPercentWidth(35);
+        textAreaConstraints.setPercentWidth(textareaWidth);
         ColumnConstraints displayAreaConstraints = new ColumnConstraints();
-        displayAreaConstraints.setPercentWidth(65);
+        displayAreaConstraints.setPercentWidth(displayareaWidth);
         window.getColumnConstraints().addAll(textAreaConstraints, displayAreaConstraints);
 
         // for responsive height
@@ -104,11 +113,43 @@ public class MarkdownEditor extends Application {
         });
     }
 
+    public void addDisplayAreaBtn() {
+        Button showEditorBtn = new Button("Show editor");
+        HBox buttonPane = new HBox(12, showEditorBtn);
+        buttonPane.setAlignment(Pos.CENTER_LEFT);
+        displayAreaContainer.setBottom(buttonPane);
+
+        showEditorBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                List columnConstraints = window.getColumnConstraints();
+                ColumnConstraints textAreaContainerConstraint = (ColumnConstraints) columnConstraints.get(0);
+                ColumnConstraints displayAreaConstraint = (ColumnConstraints) columnConstraints.get(1);
+                textAreaContainerConstraint.setPercentWidth(35);
+                displayAreaConstraint.setPercentWidth(65);
+                textareaVisible = true;
+            }
+        });
+    }
+
     public void addToolbarButtons() {
         Button hideEditor = new Button("Hide Editor");
         Button bold = new Button("Bold");
         Button italic = new Button("Italic");
         Button theme = new Button("Toggle theme");
+
+        hideEditor.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                List columnConstraints = window.getColumnConstraints();
+                ColumnConstraints textAreaContainerConstraint = (ColumnConstraints) columnConstraints.get(0);
+                ColumnConstraints displayAreaConstraint = (ColumnConstraints) columnConstraints.get(1);
+                textAreaContainerConstraint.setPercentWidth(0);
+                displayAreaConstraint.setPercentWidth(100);
+                textareaVisible = false;
+            }
+        });
+
         toolBar.getItems().addAll(hideEditor, bold, italic, theme);
     }
 
