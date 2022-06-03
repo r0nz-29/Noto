@@ -1,0 +1,30 @@
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+| 
+**Bold**
+_Italic_
+**_Bold+Italic_**
+[Hyperlink](https://raunits.vercel.app)
+
+List :
+* item1
+* item2
+
+Check-list :
+- [x] Completed task
+- [ ] Pending task
+```public static void main(String[] args) {
+	System.out.println("Multiline codeblock");
+}```
+| 
+![Image](file:///home/raunit/Downloads/raunits.png)
+<green>Colored text
+<rgb(0, 0, 255)> Color with rgb mode
+`inline codeblock`
+|
+Image with custom dimensions :
+![SizedImage](file:///home/raunit/Downloads/raunits.png)(750, 50)

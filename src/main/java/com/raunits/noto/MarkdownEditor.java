@@ -33,11 +33,11 @@ public class MarkdownEditor extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         String placeholder = "# Start typing...";
-        String savedMarkdown = Files.readString(Path.of("/home/raunits/.noto"));
+        String savedMarkdown = Files.readString(Path.of(".noto"));
 
         displayAreaContainer.setCenter(displayArea);
 
-        addDisplayAreaBtn();
+//        addDisplayAreaBtn();
 
         addToolbarButtons();
 
@@ -79,7 +79,7 @@ public class MarkdownEditor extends Application {
     @Override
     public void stop() {
         try {
-            FileWriter fileWriter = new FileWriter("/home/raunits/.noto");
+            FileWriter fileWriter = new FileWriter(".noto");
             String markdown = textArea.getText();
             for(char c : markdown.toCharArray()) {
                 fileWriter.write(c);
@@ -128,15 +128,41 @@ public class MarkdownEditor extends Application {
                 textAreaContainerConstraint.setPercentWidth(35);
                 displayAreaConstraint.setPercentWidth(65);
                 textareaVisible = true;
+                displayAreaContainer.getChildren().removeAll(buttonPane);
             }
         });
     }
 
     public void addToolbarButtons() {
+        Button open = new Button("Load file");
+        Button save = new Button("Save as");
         Button hideEditor = new Button("Hide Editor");
         Button bold = new Button("Bold");
         Button italic = new Button("Italic");
         Button theme = new Button("Toggle theme");
+
+//        bold.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent actionEvent) {
+//                String target = textArea.getSelectedText();
+//                String boldText = "**"+target+"**";
+//                textArea.setText(textArea.getText().replace(target, boldText));
+//            }
+//        });
+
+        open.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                // load file
+            }
+        });
+
+        save.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
 
         hideEditor.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -147,10 +173,11 @@ public class MarkdownEditor extends Application {
                 textAreaContainerConstraint.setPercentWidth(0);
                 displayAreaConstraint.setPercentWidth(100);
                 textareaVisible = false;
+                addDisplayAreaBtn();
             }
         });
 
-        toolBar.getItems().addAll(hideEditor, bold, italic, theme);
+        toolBar.getItems().addAll(hideEditor);
     }
 
 //    public void redirectLinks() {

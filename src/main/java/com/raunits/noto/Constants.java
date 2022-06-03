@@ -22,10 +22,14 @@ public class Constants {
     public static final String CODE = "`([^`]+)`";
     public static final String CODEBLOCK = "```([^`]+)```";
     public static final String CODEBLOCK_BUG = "(</pre>)<br/>";
-    public static final String FLEX_ROW = "\\|([^\\|\\n]+)\\|([^\\|\\n]+)\\|";
+    public static final String FLEX_ROW = "\\|([^\\|]+)\\|([^\\|]+)\\|";
+    public static final String CHECKED_BOX = "-\\s*\\[x\\]\\s*([^\\n]+)";
+    public static final String EMPTY_BOX = "-\\s*\\[\\s*\\]\\s*([^\\n]+)";
+    public static final String BOX_BUG = "(</div>)<br/>";
+    public static final String COLORTEXT = "<([()a-zA-z,0-9\\s]+)>\\s*(.+)";
 
     // replacements
-    public static final String H1_REPLACEMENT = "<h1>$1</h1>";
+    public static final String H1_REPLACEMENT = "<h1 class='font-medium leading-tight text-5xl mt-0 mb-2 text-blue-900' >$1</h1>";
     public static final String H2_REPLACEMENT = "<h2>$1</h2>";
     public static final String H3_REPLACEMENT = "<h3>$1</h3>";
     public static final String H4_REPLACEMENT = "<h4>$1</h4>";
@@ -46,4 +50,8 @@ public class Constants {
     public static final String CODEBLOCK_REPLACEMENT = "<pre>$1</pre>";
     public static final String CODEBLOCK_FIX = "$1";
     public static final String FLEXROW_REPLACEMENT = "<div style='display: flex; flex-direction: row; justify-content: space-between;'><div>$1</div><div>$2</div></div>";
+    public static final String CHECKEDBOX_REPLACEMENT = "<div><input type='checkbox' disabled class='check' name='$1' checked><label for='$1'>$1</label></div>";
+    public static final String EMPTYBOX_REPLACEMENT = "<div><input type='checkbox' disabled class='check' name='$1'><label for='$1'>$1</label></div>";
+    public static final String BOX_FIX = "$1";
+    public static final String COLORTEXT_REPLACEMENT = "<div style='color: $1;'>$2</div>";
 }

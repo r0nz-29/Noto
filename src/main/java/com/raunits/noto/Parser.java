@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class Parser {
     private final HashMap<String, String> replacements = new HashMap<>();
     private final String[] rules = {
+            Constants.COLORTEXT,
             Constants.H6,
             Constants.H5,
             Constants.H4,
@@ -18,13 +19,19 @@ public class Parser {
             Constants.HYPERLINK,
             Constants.P,
             Constants.LIST,
-            Constants.NEWLINE,
-            Constants.HEADING_BUG,
-            Constants.LIST_BUG,
             Constants.CODEBLOCK,
             Constants.CODE,
+            Constants.FLEX_ROW,
+            Constants.EMPTY_BOX,
+            Constants.CHECKED_BOX,
+
+            Constants.NEWLINE,
+
+            // fixes must come after newline
+            Constants.HEADING_BUG,
+            Constants.LIST_BUG,
             Constants.CODEBLOCK_BUG,
-            Constants.FLEX_ROW
+            Constants.BOX_BUG,
     };
 
     public Parser() {
@@ -67,6 +74,10 @@ public class Parser {
         replacements.put(Constants.CODE, Constants.CODE_REPLACEMENT);
         replacements.put(Constants.CODEBLOCK_BUG, Constants.CODEBLOCK_FIX);
         replacements.put(Constants.FLEX_ROW, Constants.FLEXROW_REPLACEMENT);
+        replacements.put(Constants.CHECKED_BOX, Constants.CHECKEDBOX_REPLACEMENT);
+        replacements.put(Constants.EMPTY_BOX, Constants.EMPTYBOX_REPLACEMENT);
+        replacements.put(Constants.BOX_BUG, Constants.BOX_FIX);
+        replacements.put(Constants.COLORTEXT, Constants.COLORTEXT_REPLACEMENT);
     }
 
 }

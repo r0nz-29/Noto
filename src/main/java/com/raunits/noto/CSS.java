@@ -44,9 +44,13 @@ public class CSS {
             .append("border: 1px solid #ccc;")
             .append("padding: 6px 10px;")
             .append("border-radius: 3px;")
-    .append("font-family: JetBrains Mono, Consolas, monospace;")
+            .append("font-family: JetBrains Mono, Consolas, monospace;")
             .append("overflow: auto;")
-            .append("margin-right: 16px;")
+            .append("}")
+
+            // checkbox
+            .append(".check {")
+            .append("margin-right: 8px;")
             .append("}")
 
             .toString();
